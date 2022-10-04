@@ -55,26 +55,26 @@
 
 This is a Maven project so requires maven to build and run.
 
-1. First clone and enter the root source code directory.
+1. First **clone and enter the root source code directory**.
 
 ```sh
 git clone https://github.com/ArenT1981/advst-word-count
-cd wordcount-arentyr
+cd advst-word-count
 ```
 
-2. Next, compile/build the code `mvn clean compile`.
-3. Next, run the tests and generate the `jacoco` test coverage binary stub:
+2. Next, **compile/build the code** `mvn clean compile`.
+3. Next, **run the tests and generate the `jacoco` test coverage binary stub**:
     - i) `mvn test` to run the tests;
     - ii) Followed by `mvn jacoco:report` to generate the HTML report.
-4. To inspect the code coverage report, open the generated `index.html` using your web-browser, under `target/site/jacoco/index.html`. e.g.
+4. To **inspect the code coverage report**, open the generated `index.html` using your web-browser, under `target/site/jacoco/index.html`. e.g.
 
 `xdg-open ./target/site/jacoco/index.html` on Linux/Unix/POSIX systems.
 
-5. To run the application on the supplied demonstration files, simply run it without any arguments:
+5. To **run** the application on the supplied demonstration files, simply run it without any arguments:
 
 `mvn exec:java -Dexec.mainClass="wordcount.App`
 
-6. To run it on plain text file(s) of your choice, supply it/them as space delimited arguments with the path/file location. You can specify multiple files/arguments:
+6. To **run it on plain text file(s) of your choice**, supply it/them as space delimited arguments with the path/file location. You can specify multiple files/arguments:
 
 `mvn exec:java -Dexec.mainClass="wordcount.App"- Dexec.args="path/to/file1.txt path/to/file2.txt path/to/file3.txt"`
 
