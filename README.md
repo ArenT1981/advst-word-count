@@ -1,6 +1,9 @@
 ![](./img/adptv-logo.png)
 
-- [Adaptavist Word Count Coding Assessment Notes](#adaptavist-word-count-coding-assessment-notes)
+<a name="adaptavist-word-count-assessment-notes"></a>
+# Adaptavist Word Count Assessment Notes
+
+- [Adaptavist Word Count Assessment Notes](#adaptavist-word-count-assessment-notes)
   * [Files](#files)
   * [Building, Testing and Executing](#building--testing-and-executing)
   * [Test Driven Development (TDD) - `AppTest.java`](#test-driven-development--tdd-----apptestjava-)
@@ -15,8 +18,6 @@
   * [Caveats/Deliberate Assumptions](#caveats-deliberate-assumptions)
   * [Testing / Coverage](#testing---coverage)
 
-<a name="adaptavist-word-count-coding-assessment-notes"></a>
-# Adaptavist Word Count Coding Assessment Notes
 
 <a name="files"></a>
 ## Files
