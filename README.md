@@ -1,6 +1,22 @@
+- [Adaptavist Word Count Coding Assessment Notes](#adaptavist-word-count-coding-assessment-notes)
+  * [Building, Testing and Executing](#building--testing-and-executing)
+  * [Test Driven Development (TDD) - `AppTest.java`](#test-driven-development--tdd-----apptestjava-)
+  * [`App.java`](#-appjava-)
+  * [`TextStatistics.java`](#-textstatisticsjava-)
+    + [`parseTextFromFile(final String path)`](#-parsetextfromfile-final-string-path--)
+    + [`parseText(final String input)`](#-parsetext-final-string-input--)
+    + [`sortWordCounts(LinkedHashMap<String, Integer> wordCounts)`](#-sortwordcounts-linkedhashmap-string--integer--wordcounts--)
+    + [`openFile(String Filename source) throws FileNotFoundException`](#-openfile-string-filename-source--throws-filenotfoundexception-)
+    + [`getSortedCounts()`](#-getsortedcounts---)
+    + [`toString()`](#-tostring---)
+  * [Caveats/Deliberate Assumptions](#caveats-deliberate-assumptions)
+  * [Testing / Coverage](#testing---coverage)
+
 # Adaptavist Word Count Coding Assessment Notes
 
 ## Building, Testing and Executing
+
+This is a Maven project so requires maven to build and run.
 
 1. First clone and enter the root source code directory.
 
