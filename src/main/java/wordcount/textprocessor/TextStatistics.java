@@ -17,7 +17,7 @@ public class TextStatistics
     private final int LINELENGTHLIMIT = 10000;
     // hard code a maximum file size of 10,000,000 lines
     private final int FILELENGTHLIMIT = 10000000;
-  
+
     public TextStatistics() {}
 
     // shortcut constructor overload to default reading from a file
@@ -26,7 +26,7 @@ public class TextStatistics
         parseTextFromFile(filename);
     }
 
-    private FileReader openFile(String filename) throws FileNotFoundException 
+    private FileReader openFile(String filename) throws FileNotFoundException
     {
          return new FileReader(filename);
     }
@@ -50,9 +50,9 @@ public class TextStatistics
 
             String line = "";
             int fl = 0;
-            while((line = br.readLine()) != null && 
-                   fl < FILELENGTHLIMIT && 
-                   line.length() < LINELENGTHLIMIT) 
+            while((line = br.readLine()) != null &&
+                   fl < FILELENGTHLIMIT &&
+                   line.length() < LINELENGTHLIMIT)
             {
                 ++fl;
                 // Important: since we're chomping up newlines, ensure there
@@ -75,8 +75,8 @@ public class TextStatistics
         LinkedHashMap<String, Integer> wordCounts = new LinkedHashMap<>();
         try
         {
-            // remove isolated hyphens from text, split altenatives on forward slash 
-            StringTokenizer st = new StringTokenizer(input.replaceAll(" - |\\/", " ")); 
+            // remove isolated hyphens from text, split altenatives on forward slash
+            StringTokenizer st = new StringTokenizer(input.replaceAll(" - |\\/", " "));
             while (st.hasMoreTokens())
             {
                 // We will DELIBERATELY ignore case. i.e. "The" == "the"; it is still the same word
@@ -87,9 +87,9 @@ public class TextStatistics
                 wordCounts.merge(token, 1, Integer::sum);
                 //System.err.println("DEBUG -> Added token " + token);
             }
-        
+
             sortedCounts =  sortWordCounts(wordCounts);
-        } 
+        }
         catch (NullPointerException ne)
         {
             sortedCounts = null;
@@ -104,10 +104,10 @@ public class TextStatistics
     public String toString()
     {
         StringBuilder resultSet = new StringBuilder("===== COUNTS ===== \n");
-        
+
         for(Entry<String, Integer> countResult : sortedCounts.entrySet())
         {
-             resultSet.append(countResult.getKey() + "=> " + countResult.getValue() + "\n");
+             resultSet.append(countResult.getKey() + ": " + countResult.getValue() + "\n");
         }
 
         return resultSet.toString();
