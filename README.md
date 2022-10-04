@@ -1,3 +1,5 @@
+![](./img/adptv-logo.png)
+
 - [Adaptavist Word Count Coding Assessment Notes](#adaptavist-word-count-coding-assessment-notes)
   * [Building, Testing and Executing](#building--testing-and-executing)
   * [Test Driven Development (TDD) - `AppTest.java`](#test-driven-development--tdd-----apptestjava-)
@@ -12,8 +14,10 @@
   * [Caveats/Deliberate Assumptions](#caveats-deliberate-assumptions)
   * [Testing / Coverage](#testing---coverage)
 
+<a name="adaptavist-word-count-coding-assessment-notes"></a>
 # Adaptavist Word Count Coding Assessment Notes
 
+<a name="building--testing-and-executing"></a>
 ## Building, Testing and Executing
 
 This is a Maven project so requires maven to build and run.
@@ -41,27 +45,31 @@ cd wordcount-arentyr
 
 `mvn exec:java -Dexec.mainClass="wordcount.App"- Dexec.args="path/to/file1.txt path/to/file2.txt path/to/file3.txt"`
 
+<a name="test-driven-development--tdd-----apptestjava-"></a>
 ## Test Driven Development (TDD) - `AppTest.java`
 
 The file `src/test/java/wordcount/AppTest.java` contains a sequence of JUnit that tests that provide close to 100% code coverage on the target classes. These exercise the code using some example/demo files which are present under `src/test/resources` and cover a gamut of demonstration/use cases. Inspection of this class should provide a pretty good specification as to how the code works/behaves. It is worth noting that the code works just fine across unicode files, though the merit/benefit of being able to treat emojis, etc., as "words" is of course debatable.
 
 It gracefully handles empty files or non-existent files.
 
+<a name="-appjava-"></a>
 ## `App.java`
 
 This file is not particularly interesting, other than that it handles the passed in command line parameters, or otherwise runs a "demo". The demo makes use of some supplied text files to exercise the code, and show the usage of the `TextStatistics.java` object, via a small `void runDemo()` method.
 
+<a name="-textstatisticsjava-"></a>
 ## `TextStatistics.java`
 
 This is where the bulk of the work is done. The object/class is deliberately named with the more general appellation `TextStatistics`, highlighting that in principle, one could conceive of many other further/future "statistics" operations one could perform on a text file for whatever purposes. Similarly, one could reasonably also envisage titling it `TextAnalysis` for that matter.
 
-
+<a name="-parsetextfromfile-final-string-path--"></a>
 ### `parseTextFromFile(final String path)`
 
 This method uses a "try-with-resources" structure to ensure we don't have any dangling file pointers/handles left open once the input file has been processed. It's purpose is simply to read in the file, line by line, and use a `StringBuilder` to assemble it into one `String`. There are a couple of hard-coded constants/limits (line length and file length) that have been set at reasonable defaults to ensure that one does not attempt to read in files of ridiculous size. Obviously if extremely large file handling was a requirement, that would probably necessitate a much more complex solution that the one presented here, if the objective was to minimise RAM overhead.
 
 This method then runs the parsed file through `ParseText` which delivers the data structure with the word counts in (see below).
 
+<a name="-parsetext-final-string-input--"></a>
 ### `parseText(final String input)`
 
 This method uses a `StringTokenizer` (one could equally well use the in-built string `split()` method) to split the input string into words/"tokens". Necessarily, it is "opinionated" (see `Caveats/Deliberate Requirements Assumptions` below), so in this case treats hyphenated compound words as one "word", similarly with forward slash separated alternative terms (e.g. "someday/maybe" is treated as one word). It employs the POSIX "punctuation" class within a regular expression to remove quotation and other surrounding particles. All words/tokens are taken in their lower case form, since we are interested in their "token count" rather than their grammatical representation; i.e. we don't care about title case.
@@ -70,22 +78,27 @@ The pairing/tuple of `(<word>, <count>)` is stored in a `LinkedHashMap <String, 
 
 The actual computationally intensive sorting task is performed by the `sortWordCounts()` method (see below).
 
+<a name="-sortwordcounts-linkedhashmap-string--integer--wordcounts--"></a>
 ### `sortWordCounts(LinkedHashMap<String, Integer> wordCounts)`
 
 This method uses a compact but involved Java 8+ style streams/functional approach to sort the word counts into descending order (i.e. largest count first). The `Map.Entry.comparingByValue` inbuilt when combined with the `Comparator.reverseOrder()` achieves just what we are after; meanwhile an anonymous lambda then builds the new resultant `LinkedHashMap` as part of the `collect()` method to return the sorted map, which we can now iterate over in the manner of a list.
 
+<a name="-openfile-string-filename-source--throws-filenotfoundexception-"></a>
 ### `openFile(String Filename source) throws FileNotFoundException`
 
 This is just a convenience wrapper used by our `parseTextFromFile` method as part of its try-with-resources.
 
+<a name="-getsortedcounts---"></a>
 ### `getSortedCounts()`
 
 A public accessor method to return access our `private sortedCounts LinkedHashMap` data structure.
 
+<a name="-tostring---"></a>
 ### `toString()`
 
 Here we `@Override` the inbuilt `toString()` method so we can very easily dump the sorted word maps/list to console by simply calling `System.out.println()` on an instance of a`TextStatistics` object.
 
+<a name="caveats-deliberate-assumptions"></a>
 ## Caveats/Deliberate Assumptions
 
 Obviously this task is not presented with a formal requirements specification that adumbrates every or indeed even any behavioural/performance/data characteristics of the desired solution. In the absence of such a specification, then, it falls upon the software engineer to state, within reasonable limits, what design assumptions they made when producing the solution. Here are mine:
@@ -96,10 +109,11 @@ Obviously this task is not presented with a formal requirements specification th
 4. Whilst the solution does require reasonably sane input files in order to deliver decent results, it nevertheless does cope nicely with empty files, and has deliberate protections in place against unreasonably large files. Having some degree of explicitly hard-coded rather than parameterised values is a reasonable design trade-off. It should also happily ingest any platform readable plain text files, including unicode. Further testing would be needed to establish whether additional protections/additional code to check and verify strange character sets or file encodings on other platforms would be needed. Once again, the object was not to over-complicate matters and turn this into too lengthy a task.
 5. One final matter to consider: this solution does not work at all for certain languages. In the West, we tend to always assume that the words/token of a given language are separated by spaces. A cursory inspection, of, for example, the Thai language, shows that this assumption is not at all universal. So this solution would not work at all on a Thai input text, as it would be likely to consider the entire paragraph of text as one "word", since Thai language does not depend on or use spaces to separate individual words. The same observation/limitation, or variant thereof, also no doubt applies to a multitude of other non-English languages.
 
+<a name="testing---coverage"></a>
 ## Testing / Coverage
 
 Within the constraints discussed above, this solution employs a reasonably substantial test class/cases, together with the use of the `Jacoco` code coverage library that provides the nicely formatted code coverage report that you can view using a web-browser (generated under `target/site/jacoco`). As you can see, the test code provides coverage across virtually the entire code-base.
 
-![](./jacoco-ss.png)
+![](./img/jacoco-ss.png)
 
 
