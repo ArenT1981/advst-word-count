@@ -82,4 +82,8 @@ Obviously this task is not presented with a formal requirements specification th
 
 ## Testing / Coverage
 
-Within the constraints discussed above, this solution employs a reasonably substantial test class/cases, together with the use of the `Jacoco` code coverage library that provides the nicely formatted code coverage report that you can view using a web-browser. As you can see, the test code provides coverage across virtually the entire code-base.
+Within the constraints discussed above, this solution employs a reasonably substantial test class/cases, together with the use of the `Jacoco` code coverage library that provides the nicely formatted code coverage report that you can view using a web-browser (generated under `target/site/jacoco`). As you can see, the test code provides coverage across virtually the entire code-base.
+
+![](./jacoco-ss.png)
+
+
