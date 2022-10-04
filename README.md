@@ -1,6 +1,7 @@
 ![](./img/adptv-logo.png)
 
 - [Adaptavist Word Count Coding Assessment Notes](#adaptavist-word-count-coding-assessment-notes)
+  * [Files](#files)
   * [Building, Testing and Executing](#building--testing-and-executing)
   * [Test Driven Development (TDD) - `AppTest.java`](#test-driven-development--tdd-----apptestjava-)
   * [`App.java`](#-appjava-)
@@ -16,6 +17,37 @@
 
 <a name="adaptavist-word-count-coding-assessment-notes"></a>
 # Adaptavist Word Count Coding Assessment Notes
+
+<a name="files"></a>
+## Files
+
+```
+.
+├── img
+│   ├── adptv-logo.png
+│   └── jacoco-ss.png
+├── pom.xml
+├── README.md
+└── src
+    ├── main
+    │   └── java
+    │       └── wordcount
+    │           ├── App.java
+    │           └── textprocessor
+    │               └── TextStatistics.java
+    └── test
+        ├── java
+        │   └── wordcount
+        │       └── AppTest.java
+        └── resources
+            ├── adaptavist.txt
+            ├── empty-file.txt
+            ├── gutenberg.txt
+            ├── stockexample.txt
+            └── unicode.txt
+
+10 directories, 12 files
+```
 
 <a name="building--testing-and-executing"></a>
 ## Building, Testing and Executing
