@@ -4,7 +4,7 @@
 ![](./img/adptv-logo.png)
 
 - [Adaptavist Word Count Assessment Notes](#adaptavist-word-count-assessment-notes)
-  * [Files](#files)
+  * [Files](#files-header)
   * [Building, Testing and Executing](#building--testing-and-executing)
   * [Test Driven Development (TDD) - `AppTest.java`](#test-driven-development--tdd-----apptestjava-)
   * [`App.java`](#-appjava-)
@@ -19,7 +19,7 @@
   * [Testing / Coverage](#testing---coverage)
 
 
-<a name="files"></a>
+<a name="files-header"></a>
 ## Files
 
 ```
