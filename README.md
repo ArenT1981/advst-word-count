@@ -1,7 +1,7 @@
-![](./img/adptv-logo.png)
-
 <a name="adaptavist-word-count-assessment-notes"></a>
 # Adaptavist Word Count Assessment Notes
+
+![](./img/adptv-logo.png)
 
 - [Adaptavist Word Count Assessment Notes](#adaptavist-word-count-assessment-notes)
   * [Files](#files)
