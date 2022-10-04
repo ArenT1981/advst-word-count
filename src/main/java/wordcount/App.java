@@ -48,7 +48,7 @@ public class App
                 catch(Exception e)
                 {
                     System.err.println("Problem opening file \"" + args[i] + "\". Does the file exist? Skipping file." +
-                                       " \n(Error: " + e.getMessage() + ").");
+                                       " \n(Trapped error: " + e.getMessage() + ").");
                 }
             }
         }
