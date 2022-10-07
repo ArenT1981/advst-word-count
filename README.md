@@ -72,7 +72,7 @@ cd advst-word-count
 
 5. To **run** the application on the supplied demonstration files, simply run it without any arguments:
 
-`mvn exec:java -Dexec.mainClass="wordcount.App`
+`mvn exec:java -Dexec.mainClass="wordcount.App"`
 
 6. To **run it on plain text file(s) of your choice**, supply it/them as space delimited arguments with the path/file location. You can specify multiple files/arguments:
 
